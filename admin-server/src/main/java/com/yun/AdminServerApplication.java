@@ -10,7 +10,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
 /**
- * Hello world!
+ * admin 服务监控
  *
  */
 @SpringBootApplication
