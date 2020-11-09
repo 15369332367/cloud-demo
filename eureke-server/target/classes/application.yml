@@ -1,0 +1,16 @@
+server:
+  port: 20001
+spring:
+  application:
+    name: eureke-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${spring.cloud.client.ip-address}:${server.port}/eureka
+#      defaultZone: http://${spring.instance.hostname}:${server.port}/eureka
+    register-with-eureka: true #自身 向eureka注册
+    fetch-registry: true #启动时禁用client的注册
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+#    hostname: 127.0.0.1

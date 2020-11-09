@@ -1,0 +1,25 @@
+server:
+  port: 20004
+spring:
+  application:
+    name: config-server
+  boot:
+    admin:
+      client:
+        url: http://${eureka.instance.hostname}:20002/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:20001/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    hostname: localhost
+  zipkin:
+    base-url: http://zipkin-server/
+  sleuth:
+    sampler:
+      percentage: 1.0
+      discovery-client-enabled: false

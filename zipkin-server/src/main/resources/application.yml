@@ -1,0 +1,21 @@
+server:
+  port: 9411
+spring:
+  application:
+    name: zipkin-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:20001/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    hostname: localhost
+#zipkin启动报错无法访问的解决方法
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
